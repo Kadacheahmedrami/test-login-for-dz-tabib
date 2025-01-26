@@ -11,7 +11,7 @@ export default function Login() {
   const handleSubmit = async () => {
     console.log('Submitting login with', { email, password, userType }); // Add this to debug input values
     try {
-      const response = await fetch('https://dz-tabib-backend.vercel.app/', {
+      const response = await fetch('https://dz-tabib-backend.vercel.app/api/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
