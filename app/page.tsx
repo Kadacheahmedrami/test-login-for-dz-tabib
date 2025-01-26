@@ -25,17 +25,7 @@ export default function Login() {
       });
 
 
-      const handleSubmit1 = async () => {
-        console.log('Submitting login with', { email, password, userType }); // Add this to debug input values
-        try {
-          const response = await fetch('https://dz-tabib-backend.vercel.app/set-cookie', {
-            method: 'GET',
-         
-            headers: {
-              'Content-Type': 'application/json',
-            },
-       
-          });
+    
 //tha was stupid 
 
       const data = await response.json();
@@ -54,6 +44,39 @@ export default function Login() {
       setResponseData(null);
     }
   };
+
+
+
+  const handleSubmit1 = async () => {
+   
+    try {
+      const response = await fetch('https://dz-tabib-backend.vercel.app/set-cookie', {
+        method: 'GET',
+     
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      
+      });
+//tha was stupid 
+      const data = await response.json();
+      console.log('Response data:', data); // Add this to debug the server response
+
+      if (response.ok) {
+        setResponseData(data);
+        setError('');
+      } else {
+        setError(data.message || 'Login failed');
+        setResponseData(null);
+      }
+    } catch (err) {
+      console.error('Error during fetch:', err); // Log any fetch error
+      setError('An error occurred. Please try again.');
+      setResponseData(null);
+    }
+  };
+
+  
 
   return (
     <div className="flex flex-col items-center justify-center h-screen text-black bg-black p-4">
