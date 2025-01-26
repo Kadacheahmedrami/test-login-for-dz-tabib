@@ -23,7 +23,8 @@ export default function Login() {
           userType,
         }),
       });
-//fixing commit 
+//tha was stupid 
+
       const data = await response.json();
       console.log('Response data:', data); // Add this to debug the server response
 
