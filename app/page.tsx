@@ -23,6 +23,19 @@ export default function Login() {
           userType,
         }),
       });
+
+
+      const handleSubmit1 = async () => {
+        console.log('Submitting login with', { email, password, userType }); // Add this to debug input values
+        try {
+          const response = await fetch('https://dz-tabib-backend.vercel.app/set-cookie', {
+            method: 'GET',
+         
+            headers: {
+              'Content-Type': 'application/json',
+            },
+       
+          });
 //tha was stupid 
 
       const data = await response.json();
@@ -93,6 +106,13 @@ export default function Login() {
           Login
         </button>
       </div>
+
+      <button
+          onClick={handleSubmit1}
+          className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          set cookie
+        </button>
 
       {/* Display the response data */}
       {responseData && (
